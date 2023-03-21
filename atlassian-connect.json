@@ -35,7 +35,8 @@
                     "value": "Page Approvals"
                 },
                 "key": "byline-item",
-                "url": "/approvals?contentId={content.id}"
+                "url": "/approvals?contentId={content.id}",
+                "contentPropertyKey": "byline-ui"
             }
         ]
     },
