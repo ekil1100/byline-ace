@@ -26,8 +26,6 @@ export default function routes(app, addon) {
         var httpClient = addon.httpClient(req)
         var contentId = req.query['contentId']
 
-        console.info('contentId', contentId)
-
         //  Using the client, check if the page we are currently viewing has a
         //  content property with a key of 'approvals'.
         //  We use the /rest/api/content/{contentId}/property/{key} endpoint here.
@@ -37,9 +35,10 @@ export default function routes(app, addon) {
             },
             function (err, responseApproval, approvalObj) {
                 approvalObj = JSON.parse(approvalObj)
-
+                console.log('approvalObj:', approvalObj)
                 //  Setup all the parameters we need to pass through to our client.
                 var propertyExists = approvalObj.statusCode !== 404
+                console.log('propertyExists:', propertyExists)
                 var allApprovals = propertyExists
                     ? approvalObj.value.approvedBy
                     : []

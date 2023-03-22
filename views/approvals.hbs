@@ -16,10 +16,9 @@
         var currentApprovalNumber = {{numberApprovedBy}};
         var currUser;
 
-        console.log("allApprovals", {{allApprovals}})
-
         AP.user.getCurrentUser(function(user){
-            currUser = user.id;
+            console.log("user", user)
+            currUser = user.atlassianAccountId;
             if(currUsers.indexOf(currUser) !== -1){
                 //  We already have the user,
                 //  update our UI accordingly.
@@ -31,6 +30,7 @@
 
         $('#approve-page').on('click', function(){
             currUsers.push(currUser);
+            console.log("currUsers", currUsers)
 
             AP.confluence.getContentProperty('byline-ui', function(bylineProp){
                 var bylineVersion = 1;
